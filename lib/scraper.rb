@@ -39,4 +39,15 @@ class Scraper
     student_details
   end
 
+  
+  def self.scrape_districts(url_uk_postcode)
+    url_uk_postcode = "https://www.doogal.co.uk/UKPostcodes.php"
+    html = File.read(url_uk_postcode)
+    districts_on_website = Nokogiri::HTML(html)
+    my_district = []
+    districts_on_website.css("tr class")
+    binding.pry
+  end
+  
+
 end
