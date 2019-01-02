@@ -45,8 +45,8 @@ class Scraper
     html = File.read(url_uk_postcode)
     districts_on_website = Nokogiri::HTML(html)
     my_district = []
-    districts_on_website.css("tr class")
     binding.pry
+    districts_on_website.css("tr class")
   end
 
 
