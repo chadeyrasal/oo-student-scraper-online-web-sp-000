@@ -17,36 +17,25 @@ class Scraper
     students
   end
 
-#  def self.scrape_profile_page(profile_url)
-#    html = File.read(profile_url)
-#    profile_page = Nokogiri::HTML(html)
-#    student_details = {}
-#    social_networks = profile_page.css("div.social-icon-container a").collect{|network| network.attribute("href").value}
-#    social_networks.each do |link|
-#      if link.include?("twitter")
-#        student_details[:twitter] = link
-#      elsif link.include?("linkedin")
-#        student_details[:linkedin] = link
-#      elsif link.include?("github")
-#        student_details[:github] = link
-#      else
-#        student_details[:blog] = link
-#      end
-#    end
-#    student_details[:profile_quote] = profile_page.css("div.profile-quote").text
-#    student_details[:bio] = profile_page.css("div.description-holder p").text
-#    student_details
-#  end
-
-
   def self.scrape_profile_page(profile_url)
-    url_uk_postcode = "https://www.doogal.co.uk/UKPostcodes.php"
-    html = File.read(url_uk_postcode)
-    districts_on_website = Nokogiri::HTML(html)
-    my_district = []
-    binding.pry
-    districts_on_website.css("tr class")
+    html = File.read(profile_url)
+    profile_page = Nokogiri::HTML(html)
+    student_details = {}
+    social_networks = profile_page.css("div.social-icon-container a").collect{|network| network.attribute("href").value}
+    social_networks.each do |link|
+      if link.include?("twitter")
+        student_details[:twitter] = link
+      elsif link.include?("linkedin")
+        student_details[:linkedin] = link
+      elsif link.include?("github")
+        student_details[:github] = link
+      else
+        student_details[:blog] = link
+      end
+    end
+    student_details[:profile_quote] = profile_page.css("div.profile-quote").text
+    student_details[:bio] = profile_page.css("div.description-holder p").text
+    student_details
   end
-
 
 end
